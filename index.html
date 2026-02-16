@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat Profesional - Ricky Steven Silaban</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-background: #0A0E14;
+            --color-surface: #131821;
+            --color-surface-elevated: #1A1F2B;
+            --color-text-primary: #F8F9FA;
+            --color-text-secondary: #A8B2C1;
+            --color-text-tertiary: #6B7785;
+            --color-accent: #5B9FED;
+            --color-accent-glow: rgba(91, 159, 237, 0.15);
+            --color-border: rgba(168, 178, 193, 0.08);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'IBM Plex Sans', sans-serif;
+            --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Background Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--color-accent-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(91, 159, 237, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Grain Texture */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 14, 20, 0.85);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--color-text-primary);
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.2s forwards;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.4s forwards;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            text-align: center;
+        }
+
+        .hero-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.6s forwards;
+        }
+
+        .hero-subtext {
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.01em;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.8s forwards;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            padding: 3rem 0 4rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 0.9s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 2rem 0 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) 1s forwards;
+        }
+
+        .filter-btn {
+            padding: 0.625rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-surface-elevated);
+            border-color: var(--color-accent);
+            color: var(--color-text-primary);
+        }
+
+        /* Certificate Grid */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+            padding-bottom: 8rem;
+        }
+
+        .certificate-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--transition-smooth) forwards;
+            cursor: pointer;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s var(--transition-smooth);
+        }
+
+        .certificate-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .certificate-card:hover {
+            background: var(--color-surface-elevated);
+            border-color: rgba(91, 159, 237, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Staggered animation delays */
+        .certificate-card:nth-child(1) { animation-delay: 1.2s; }
+        .certificate-card:nth-child(2) { animation-delay: 1.3s; }
+        .certificate-card:nth-child(3) { animation-delay: 1.4s; }
+        .certificate-card:nth-child(4) { animation-delay: 1.5s; }
+        .certificate-card:nth-child(5) { animation-delay: 1.6s; }
+        .certificate-card:nth-child(6) { animation-delay: 1.7s; }
+        .certificate-card:nth-child(7) { animation-delay: 1.8s; }
+        .certificate-card:nth-child(8) { animation-delay: 1.9s; }
+        .certificate-card:nth-child(9) { animation-delay: 2.0s; }
+
+        .cert-image-container {
+            width: 100%;
+            height: 200px;
+            background: var(--color-surface-elevated);
+            border: 1px solid var(--color-border);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .cert-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition-smooth);
+        }
+
+        .certificate-card:hover .cert-image {
+            transform: scale(1.05);
+        }
+
+        .cert-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 20, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s var(--transition-smooth);
+        }
+
+        .certificate-card:hover .cert-image-overlay {
+            opacity: 1;
+        }
+
+        .view-icon {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(91, 159, 237, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .view-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-accent);
+        }
+
+        .cert-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-text-tertiary);
+            font-weight: 500;
+        }
+
+        .cert-divider {
+            width: 1px;
+            height: 12px;
+            background: var(--color-border);
+        }
+
+        .cert-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--color-text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .cert-issuer {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .cert-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .cert-detail {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+
+        .cert-detail-label {
+            color: var(--color-text-tertiary);
+            font-weight: 400;
+        }
+
+        .cert-detail-value {
+            color: var(--color-text-secondary);
+            font-weight: 400;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8125rem;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 20, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s var(--transition-smooth);
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9);
+            transition: transform 0.4s var(--transition-smooth);
+        }
+
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-image-container {
+            position: relative;
+            max-height: 80vh;
+            overflow: auto;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            border-radius: 4px;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .lightbox-info {
+            background: var(--color-surface);
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .lightbox-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
+        }
+
+        .lightbox-issuer {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            z-index: 10;
+        }
+
+        .lightbox-close:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-close svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-text-primary);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            z-index: 10;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .lightbox-nav svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-text-primary);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+        }
+
+        .footer-divider {
+            width: 1px;
+            height: 16px;
+            background: var(--color-border);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+
+            .stats-section {
+                gap: 2rem;
+                padding: 2rem 0 3rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding-bottom: 4rem;
+            }
+
+            .certificate-card {
+                padding: 2rem;
+            }
+
+            .filter-section {
+                padding: 1.5rem 0 3rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .footer-divider {
+                width: 16px;
+                height: 1px;
+            }
+
+            .lightbox-content {
+                max-width: 95%;
+            }
+
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                top: -45px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .cert-image-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Ricky Steven Silaban</div>
+                <div class="header-status">
+                    <span class="status-dot"></span>
+                    <span>Terverifikasi</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-headline">Sertifikat Profesional Terverifikasi</h1>
+            <p class="hero-subtext">Kredensial yang diakui industri memvalidasi keahlian teknis dan pengembangan profesional</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container">
+        <div class="stats-section">
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Sertifikat</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Provider</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2026</div>
+                <div class="stat-label">Terbaru</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <button class="filter-btn active" data-category="all">Semua</button>
+            <button class="filter-btn" data-category="idwebhost">IDwebhost</button>
+            <button class="filter-btn" data-category="dicoding">Dicoding</button>
+            <button class="filter-btn" data-category="hp-life">HP LIFE</button>
+            <button class="filter-btn" data-category="revou">RevoU</button>
+            <button class="filter-btn" data-category="bisa-safety">BISA Safety</button>
+            <button class="filter-btn" data-category="dentech">Dentech</button>
+            <button class="filter-btn" data-category="central-course">Central Course</button>
+        </div>
+    </section>
+
+    <!-- Certificates Grid -->
+    <section class="container">
+        <div class="certificates-grid">
+            
+            <!-- Certificate 1: IoT Programming -->
+            <div class="certificate-card" data-category="dentech" data-cert-id="0">
+                <div class="cert-image-container">
+                    <img src="images/Ricky Steven Silaban E-Certificate Peserta (1)_page-0001.jpg" alt="Sertifikat IoT Programming" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>IoT & Programming</span>
+                    <span class="cert-divider"></span>
+                    <span>2026</span>
+                </div>
+                <h3 class="cert-title">IoT Programming Fundamentals: MicroPython & ESP32</h3>
+                <p class="cert-issuer">Dentech Corporation</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal</span>
+                        <span class="cert-detail-value">01 Februari 2026</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Durasi</span>
+                        <span class="cert-detail-value">120 Menit (2 Jam)</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">No. Sertifikat</span>
+                        <span class="cert-detail-value">006/PST-TRN88/II/2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 2: K3 Lingkungan Kerja -->
+            <div class="certificate-card" data-category="bisa-safety" data-cert-id="1">
+                <div class="cert-image-container">
+                    <img src="images/sertifikat K3_page-0001.jpg" alt="Sertifikat K3 Lingkungan Kerja" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>Keselamatan Kerja</span>
+                    <span class="cert-divider"></span>
+                    <span>2026</span>
+                </div>
+                <h3 class="cert-title">K3 Lingkungan Kerja</h3>
+                <p class="cert-issuer">BISA Safety - PT. Borneo Indo Safety</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal</span>
+                        <span class="cert-detail-value">13 Februari 2026</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">SK Kemenkumham</span>
+                        <span class="cert-detail-value">AHU-00187.AH.02.01.2018</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 3: TOEFL Prediction -->
+            <div class="certificate-card" data-category="central-course" data-cert-id="2">
+                <div class="cert-image-container">
+                    <img src="images/RICKY STEVEN SILABAN (1)_page-0001.jpg" alt="TOEFL Prediction Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>English Proficiency</span>
+                    <span class="cert-divider"></span>
+                    <span>2026</span>
+                </div>
+                <h3 class="cert-title">TOEFL Prediction Test</h3>
+                <p class="cert-issuer">Central Course</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Test Date</span>
+                        <span class="cert-detail-value">03 Januari 2026</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Valid Until</span>
+                        <span class="cert-detail-value">03 Januari 2028</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Total Score</span>
+                        <span class="cert-detail-value">567</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Registration No.</span>
+                        <span class="cert-detail-value">2601190944</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 4: Intro to Software Engineering -->
+            <div class="certificate-card" data-category="revou" data-cert-id="3">
+                <div class="cert-image-container">
+                    <img src="images/CCSE_rickysilaban384gmail.com_CCSE 260126-01-1-00001 (1)_page-0001.jpg" alt="Intro to Software Engineering Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>Software Engineering</span>
+                    <span class="cert-divider"></span>
+                    <span>2026</span>
+                </div>
+                <h3 class="cert-title">Intro to Software Engineering</h3>
+                <p class="cert-issuer">RevoU - Coding Camp</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal Terbit</span>
+                        <span class="cert-detail-value">30 Januari 2026</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">No. Sertifikat</span>
+                        <span class="cert-detail-value">CCSE 260126-01-1-00001</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 5: HP LIFE - Situs Web Bisnis -->
+            <div class="certificate-card" data-category="hp-life" data-cert-id="4">
+                <div class="cert-image-container">
+                    <img src="images/a511c05e-47fa-4e69-a9bc-eac01c453665_page-0001.jpg" alt="HP LIFE - Situs Web Bisnis Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>Web Development</span>
+                    <span class="cert-divider"></span>
+                    <span>2025</span>
+                </div>
+                <h3 class="cert-title">Situs Web Bisnis yang Efektif</h3>
+                <p class="cert-issuer">HP LIFE Foundation</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal</span>
+                        <span class="cert-detail-value">12 Desember 2025</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">No. Sertifikat</span>
+                        <span class="cert-detail-value">a511c05e-47fa-4e69-d9bc-eac01c453665</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 6: HP LIFE - Data Science -->
+            <div class="certificate-card" data-category="hp-life" data-cert-id="5">
+                <div class="cert-image-container">
+                    <img src="images/certificate (1)_page-0001.jpg" alt="HP LIFE - Data Science Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>Data Science</span>
+                    <span class="cert-divider"></span>
+                    <span>2025</span>
+                </div>
+                <h3 class="cert-title">Data Science & Analytics</h3>
+                <p class="cert-issuer">HP LIFE Foundation</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Presented</span>
+                        <span class="cert-detail-value">12 Desember 2025</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">No. Sertifikat</span>
+                        <span class="cert-detail-value">d8dd6d6e-7a42-48aa-bd2d-ca3ca580c89d</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 7: Dicoding - AI Web Dev -->
+            <div class="certificate-card" data-category="dicoding" data-cert-id="6">
+                <div class="cert-image-container">
+                    <img src="images/idcamp-x-dicoding-live-5-ai-web-dev-build-real-apps-with-lovable-antigravity-certificate (1)_page-0001.jpg" alt="Dicoding - AI Web Dev Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>AI & Web Development</span>
+                    <span class="cert-divider"></span>
+                    <span>2026</span>
+                </div>
+                <h3 class="cert-title">IDCamp x Dicoding Live #5 - AI Web Dev: Build Real Apps with Lovable & Antigravity</h3>
+                <p class="cert-issuer">Dicoding Indonesia - Indosat Ooredoo Hutchison Digital Camp</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal</span>
+                        <span class="cert-detail-value">10 Februari 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 8: IDwebhost - AI Design -->
+            <div class="certificate-card" data-category="idwebhost" data-cert-id="7">
+                <div class="cert-image-container">
+                    <img src="images/Ricky Steven Silaban_page-0001.jpg" alt="IDwebhost - AI Design Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>AI Design</span>
+                    <span class="cert-divider"></span>
+                    <span>2025</span>
+                </div>
+                <h3 class="cert-title">AI Design: Cara Baru Desain yang Lebih Cepat, Kreatif, dan Efisien</h3>
+                <p class="cert-issuer">IDwebTalks powered by IDwebhost</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal</span>
+                        <span class="cert-detail-value">23 Desember 2025</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">No. Sertifikat</span>
+                        <span class="cert-detail-value">049/IDWEBTALKS-12/I/2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate 9: IDwebhost - Heuristic Bias -->
+            <div class="certificate-card" data-category="idwebhost" data-cert-id="8">
+                <div class="cert-image-container">
+                    <img src="images/Ricky_Steven_Silaban_(2)[1]_page-0001.jpg" alt="IDwebhost - Heuristic Bias Certificate" class="cert-image">
+                    <div class="cert-image-overlay">
+                        <div class="view-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="cert-meta">
+                    <span>UI/UX Design</span>
+                    <span class="cert-divider"></span>
+                    <span>2026</span>
+                </div>
+                <h3 class="cert-title">Bongkar Trik Heuristic Bias: Cara Bikin Netizen Berhenti Scroll Dalam 3 Detik!</h3>
+                <p class="cert-issuer">IDwebTalks powered by IDwebhost</p>
+                <div class="cert-details">
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">Tanggal</span>
+                        <span class="cert-detail-value">30 Januari 2026</span>
+                    </div>
+                    <div class="cert-detail">
+                        <span class="cert-detail-label">No. Sertifikat</span>
+                        <span class="cert-detail-value">015/IDWEBTALKS-I/I/2026</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="lightbox-image-container">
+                <img src="" alt="Certificate" class="lightbox-image" id="lightboxImage">
+            </div>
+            <div class="lightbox-info">
+                <h3 class="lightbox-title" id="lightboxTitle"></h3>
+                <p class="lightbox-issuer" id="lightboxIssuer"></p>
+            </div>
+        </div>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <span>© 2026 Ricky Steven Silaban</span>
+                <span class="footer-divider"></span>
+                <span>Semua sertifikat terverifikasi</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Certificate data
+        const certificates = [
+            {
+                image: "images/Ricky Steven Silaban E-Certificate Peserta (1)_page-0001.jpg",
+                title: "IoT Programming Fundamentals: MicroPython & ESP32",
+                issuer: "Dentech Corporation"
+            },
+            {
+                image: "images/sertifikat K3_page-0001.jpg",
+                title: "K3 Lingkungan Kerja",
+                issuer: "BISA Safety - PT. Borneo Indo Safety"
+            },
+            {
+                image: "images/RICKY STEVEN SILABAN (1)_page-0001.jpg",
+                title: "TOEFL Prediction Test",
+                issuer: "Central Course"
+            },
+            {
+                image: "images/CCSE_rickysilaban384gmail.com_CCSE 260126-01-1-00001 (1)_page-0001.jpg",
+                title: "Intro to Software Engineering",
+                issuer: "RevoU - Coding Camp"
+            },
+            {
+                image: "images/a511c05e-47fa-4e69-a9bc-eac01c453665_page-0001.jpg",
+                title: "Situs Web Bisnis yang Efektif",
+                issuer: "HP LIFE Foundation"
+            },
+            {
+                image: "images/certificate (1)_page-0001.jpg",
+                title: "Data Science & Analytics",
+                issuer: "HP LIFE Foundation"
+            },
+            {
+                image: "images/idcamp-x-dicoding-live-5-ai-web-dev-build-real-apps-with-lovable-antigravity-certificate (1)_page-0001.jpg",
+                title: "IDCamp x Dicoding Live #5 - AI Web Dev",
+                issuer: "Dicoding Indonesia"
+            },
+            {
+                image: "images/Ricky Steven Silaban_page-0001.jpg",
+                title: "AI Design: Cara Baru Desain yang Lebih Cepat, Kreatif, dan Efisien",
+                issuer: "IDwebTalks powered by IDwebhost"
+            },
+            {
+                image: "images/Ricky_Steven_Silaban_(2)[1]_page-0001.jpg",
+                title: "Bongkar Trik Heuristic Bias",
+                issuer: "IDwebTalks powered by IDwebhost"
+            }
+        ];
+
+        let currentCertIndex = 0;
+        let visibleCertificates = [];
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const certificateCards = document.querySelectorAll('.certificate-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+                visibleCertificates = [];
+                
+                certificateCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards';
+                        visibleCertificates.push(parseInt(card.dataset.certId));
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize visible certificates
+        certificateCards.forEach(card => {
+            visibleCertificates.push(parseInt(card.dataset.certId));
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxIssuer = document.getElementById('lightboxIssuer');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+
+        function openLightbox(index) {
+            currentCertIndex = visibleCertificates.indexOf(index);
+            if (currentCertIndex === -1) currentCertIndex = 0;
+            
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            const certIndex = visibleCertificates[currentCertIndex];
+            const cert = certificates[certIndex];
+            
+            lightboxImage.src = cert.image;
+            lightboxTitle.textContent = cert.title;
+            lightboxIssuer.textContent = cert.issuer;
+        }
+
+        function nextCertificate() {
+            currentCertIndex = (currentCertIndex + 1) % visibleCertificates.length;
+            updateLightbox();
+        }
+
+        function prevCertificate() {
+            currentCertIndex = (currentCertIndex - 1 + visibleCertificates.length) % visibleCertificates.length;
+            updateLightbox();
+        }
+
+        // Event listeners for cards
+        certificateCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const certId = parseInt(card.dataset.certId);
+                openLightbox(certId);
+            });
+        });
+
+        // Event listeners for lightbox controls
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevCertificate);
+        lightboxNext.addEventListener('click', nextCertificate);
+
+        // Close lightbox when clicking outside
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    prevCertificate();
+                    break;
+                case 'ArrowRight':
+                    nextCertificate();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
